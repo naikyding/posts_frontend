@@ -6,6 +6,8 @@
   background: #eec32a;
   -webkit-box-shadow: 0px 3px 0px #000400;
           box-shadow: 0px 3px 0px #000400;
+  text-decoration: none;
+  color: #000400;
 }
 
 .search-area {
