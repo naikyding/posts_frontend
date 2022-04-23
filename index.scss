@@ -1,10 +1,20 @@
 $baseBorderClr: #000400;
 $baseFontSize: 1rem;
 $primary: #03438d;
+$secondary: #eec32a;
 $desc: #9b9893;
 
-.search-area {
+#post-button {
   margin-top: 49px;
+  font-size: $baseFontSize;
+  height: 54px;
+  width: 533px;
+  background: $secondary;
+  box-shadow: 0px 3px 0px #000400;
+}
+
+.search-area {
+  margin-top: 16px;
   &__filter {
     position: relative;
     margin-right: 12px;
