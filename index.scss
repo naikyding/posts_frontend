@@ -1,11 +1,142 @@
-.test {
-  color: black;
+$baseBorderClr: #000400;
+$baseFontSize: 1rem;
+$primary: #03438d;
+$desc: #9b9893;
 
-  .step1 {
-    color: red;
+.search-area {
+  margin-top: 49px;
+  &__filter {
+    position: relative;
+    margin-right: 12px;
+    #search {
+      padding: 0 1rem;
+      appearance: none;
+      font-size: $baseFontSize;
+      width: 156px;
+      height: 46px;
+      opacity: 1;
+      border: 2px solid $baseBorderClr;
+    }
+    > img {
+      pointer-events: none;
+      position: absolute;
+      right: 1rem;
+      height: 100%;
+    }
   }
+  &__search {
+    width: 365px;
+    height: 42px;
+    border: 2px solid $baseBorderClr;
+    input {
+      width: 100%;
+      height: 100%;
+      font-size: $baseFontSize;
+      color: $desc;
+      outline: none;
+      border-style: none;
+      padding: 0 1rem;
+    }
+    button {
+      width: 46px;
+      height: 46px;
+      background: $primary;
+      color: white;
+      border: 2px solid $baseBorderClr;
+      border-right: none;
+      > img {
+        color: white;
+      }
+    }
+  }
+}
 
-  .step2 {
-    color: yellow;
+.post {
+  .item {
+    width: 485px;
+    color: $baseBorderClr;
+    padding: 24px;
+    box-shadow: 0px 3px 0px #000400;
+    &__header {
+      &-avatar {
+        border: 2px solid $baseBorderClr;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      &-dec {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .created-time {
+          font-size: 12px;
+          color: $desc;
+        }
+      }
+    }
+    &__content {
+      line-height: 24px;
+    }
   }
+}
+
+.d-flex {
+  display: flex;
+}
+.d-flex-start {
+  display: flex;
+  align-items: center;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-click {
+  cursor: pointer;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mx-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mr-4 {
+  margin-right: 16px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.border-rounded {
+  border: 2px solid $baseBorderClr;
+  border-radius: 8px;
+}
+
+.text-bold {
+  font-weight: bold;
 }

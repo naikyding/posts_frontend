@@ -8,7 +8,54 @@
     <link rel="stylesheet" href="style/index.css" />
     <title>列表</title>
   </head>
-  <body>
+
+  <body class="d-flex-start flex-column">
+    <!-- SEARCH -->
+    <div class="search-area d-flex">
+      <div class="search-area__filter d-flex">
+        <select id="search" class="d-click">
+          <option value="">最新貼文</option>
+          <option value="">最舊貼文</option>
+        </select>
+        <img src="./images/arrow-down.svg" width="16" alt="" />
+      </div>
+      <div class="search-area__search d-flex-center">
+        <input placeholder="搜尋貼文" type="text" />
+        <button class="d-click">
+          <img src="./images/search.svg" width="20" alt="search" />
+        </button>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="list mb-4">
+      <!-- item -->
+      <div class="post">
+        <div class="item border-rounded mt-4">
+          <div class="item__header d-flex">
+            <div class="item__header-avatar mr-4">
+              <img src="https://picsum.photos/600/600" alt="" />
+            </div>
+            <div class="item__header-dec">
+              <div class="name text-bold">邊緣小杰</div>
+              <div class="created-time mt-2">2022/1/10 12:00</div>
+            </div>
+          </div>
+          <div class="item__content mx-4">
+            外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....
+          </div>
+          <div class="item__img">
+            <img
+              width="100%"
+              class="border-rounded"
+              src="https://picsum.photos/600/400"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/get.js"></script>
   </body>
 </html>
