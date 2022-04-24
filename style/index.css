@@ -159,6 +159,57 @@
           filter: hue-rotate(90deg);
 }
 
+.nodata-item {
+  width: 533px;
+  color: #9b9893;
+  -webkit-box-shadow: 0px 3px 0px #000400;
+          box-shadow: 0px 3px 0px #000400;
+}
+
+.nodata-item .bar .circle {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  background: #de4b63;
+  border-radius: 50%;
+  border: 1px solid #000400;
+  display: inline-block;
+}
+
+.nodata-item .bar .circle::before {
+  position: absolute;
+  content: '';
+  top: -1px;
+  left: 15px;
+  width: 9px;
+  height: 9px;
+  background: #faa722;
+  border-radius: 50%;
+  border: 1px solid #000400;
+  display: inline-block;
+}
+
+.nodata-item .bar .circle::after {
+  position: absolute;
+  content: '';
+  top: -1px;
+  left: 32px;
+  width: 9px;
+  height: 9px;
+  background: #83c51d;
+  border-radius: 50%;
+  border: 1px solid #000400;
+  display: inline-block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pa-0 {
+  padding: 0;
+}
+
 .d-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -237,5 +288,24 @@
 
 .pa-4 {
   padding: 16px;
+}
+
+.px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.py-5 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.py-8 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.border-t-1 {
+  border-bottom: 2px solid #000400;
 }
 /*# sourceMappingURL=index.css.map */

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/reset.css" />
     <link rel="stylesheet" href="style/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>列表</title>
   </head>
 
@@ -37,30 +38,14 @@
     </div>
 
     <!-- LIST -->
-    <div class="list mb-4">
-      <!-- item -->
+    <div class="list mb-4" id="list">
+      <!-- nodata -->
       <div class="post">
-        <div class="item border-rounded mt-4">
-          <div class="item__header d-flex">
-            <div class="item__header-avatar mr-4">
-              <img src="https://picsum.photos/600/600" alt="" />
-            </div>
-            <div class="item__header-dec">
-              <div class="name text-bold">邊緣小杰</div>
-              <div class="created-time mt-2">2022/1/10 12:00</div>
-            </div>
+        <div class="nodata-item border-rounded mt-4 no-data">
+          <div class="bar px-4 py-5 border-t-1">
+            <span class="circle"></span>
           </div>
-          <div class="item__content mx-4">
-            外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....
-          </div>
-          <div class="item__img">
-            <img
-              width="100%"
-              class="border-rounded"
-              src="https://picsum.photos/600/400"
-              alt=""
-            />
-          </div>
+          <p class="no-data text-center py-8">目前尚無動態，新增一則貼文吧！</p>
         </div>
       </div>
     </div>
