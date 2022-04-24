@@ -35,6 +35,19 @@
   const getListApi = () => getListSuccess
   const listElement = document.querySelector('#list')
 
+  const createNoDataDisplay = (el) => {
+    el.innerHTML = `
+      <div class="post">
+        <div class="nodata-item border-rounded mt-4 no-data">
+          <div class="bar px-4 py-5 border-t-1">
+            <span class="circle"></span>
+          </div>
+          <p class="no-data text-center py-8">目前尚無動態，新增一則貼文吧！</p>
+        </div>
+      </div>
+    `
+  }
+
   const createPostItem = ({ name, avatar, image, content, createdAt }) => {
     return `
     <div class="post">
@@ -67,7 +80,7 @@
   const getList = async () => {
     try {
       const { data } = await getListApi()
-      if (data.length < 1) return
+      if (data.length < 1) return createNoDataDisplay(listElement)
 
       let listsElement = ''
       data.forEach((list) => {
