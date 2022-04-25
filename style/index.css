@@ -85,7 +85,9 @@
 
 .post .item__header-avatar img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .post .item__header-dec {
@@ -307,5 +309,9 @@
 
 .border-t-1 {
   border-bottom: 2px solid #000400;
+}
+
+.d-none {
+  display: none;
 }
 /*# sourceMappingURL=index.css.map */
