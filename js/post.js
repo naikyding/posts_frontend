@@ -40,8 +40,8 @@ submitButton.addEventListener('click', async (e) => {
   try {
     e.preventDefault()
     const formElement = e.target.form
-    const defaultAvatar = 'https://picsum.photos/600/400'
-    // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW4Lz_27xIJEYJam3xsO63X6qvlIWpHarS1Q&usqp=CAU'
+    const defaultAvatar =
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW4Lz_27xIJEYJam3xsO63X6qvlIWpHarS1Q&usqp=CAU'
 
     const image = formElement[2].value.trim() || undefined
 
