@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>列表</title>
+  </head>
+
+  <body class="d-flex-start flex-column">
+    <div id="post-item" class="d-flex-center text-bold">張貼動態</div>
+
+    <!-- POST FORM -->
+    <div class="list mb-4">
+      <div class="post">
+        <div class="item border-rounded mt-4 post-form">
+          <form id="form">
+            <!-- 姓名 -->
+            <label>
+              姓名:
+              <input
+                type="text"
+                placeholder="請輸入你的姓名"
+                class="d-block mt-2 border-rounded"
+              />
+            </label>
+
+            <!-- 頭像 -->
+            <label>
+              頭像連結:
+              <input
+                type="text"
+                placeholder="請輸入頭像連結"
+                class="d-block mt-2 border-rounded"
+              />
+            </label>
+
+            <!-- 上傳圖像連結 -->
+            <label>
+              上傳圖片:
+              <input
+                type="text"
+                placeholder="請輸入圖片連結"
+                class="d-block mt-2 border-rounded"
+              />
+            </label>
+
+            <!-- 內容 -->
+            <label>
+              貼文內容:
+              <textarea
+                class="d-block border-rounded pa-4"
+                cols="30"
+                rows="10"
+                placeholder="請輸入你的貼文內容"
+              ></textarea>
+            </label>
+
+            <div class="d-flex-center">
+              <button
+                id="submit-button"
+                class="border-rounded text-bold d-click"
+              >
+                送出貼文
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/post.js"></script>
+  </body>
+</html>

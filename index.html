@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>列表</title>
+  </head>
+
+  <body class="d-flex-start flex-column">
+    <!-- POST -->
+    <a
+      href="./post.html"
+      id="post-button"
+      class="d-flex-center border-rounded text-bold d-click"
+    >
+      張貼動態
+    </a>
+
+    <!-- SEARCH -->
+    <div class="search-area d-flex">
+      <div class="search-area__filter d-flex">
+        <select id="search" class="d-click">
+          <option value="">最新貼文</option>
+          <option value="">最舊貼文</option>
+        </select>
+        <img src="./images/arrow-down.svg" width="16" alt="" />
+      </div>
+      <div class="search-area__search d-flex-center">
+        <input placeholder="搜尋貼文" type="text" />
+        <button class="d-click">
+          <img src="./images/search.svg" width="20" alt="search" />
+        </button>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="list mb-4" id="list">
+      <!-- nodata -->
+    </div>
+
+    <script src="js/get.js"></script>
+  </body>
+</html>
