@@ -24,15 +24,15 @@
     <!-- SEARCH -->
     <div class="search-area d-flex">
       <div class="search-area__filter d-flex">
-        <select id="search" class="d-click">
-          <option value="">最新貼文</option>
-          <option value="">最舊貼文</option>
+        <select id="search" class="d-click" onchange="filterChange()">
+          <option value="new">最新貼文</option>
+          <option value="old">最舊貼文</option>
         </select>
         <img src="./images/arrow-down.svg" width="16" alt="" />
       </div>
       <div class="search-area__search d-flex-center">
-        <input placeholder="搜尋貼文" type="text" />
-        <button class="d-click">
+        <input id="keyword" placeholder="搜尋貼文" type="text" />
+        <button id="search-btn" class="d-click">
           <img src="./images/search.svg" width="20" alt="search" />
         </button>
       </div>

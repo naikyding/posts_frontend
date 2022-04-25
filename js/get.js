@@ -1,59 +1,60 @@
-;(function () {
-  // MOCK
-  const getListSuccess = {
-    status: 'Success',
-    message: '操作成功',
-    data: [
-      {
-        name: 'naiky',
-        avatar: 'https://picsum.photos/600/600',
-        image: 'https://picsum.photos/600/400',
-        createdAt: '2022/1/10 12:00',
-        content:
-          '外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....',
-      },
-      {
-        name: 'naiky',
-        avatar: 'https://picsum.photos/600/600',
-        image: 'https://picsum.photos/600/400',
-        createdAt: '2022/1/10 12:00',
-        content:
-          '外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....',
-      },
-      {
-        name: 'naiky',
-        avatar: 'https://picsum.photos/600/600',
-        image: 'https://picsum.photos/600/400',
-        createdAt: '2022/1/10 12:00',
-        content:
-          '外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....',
-      },
-    ],
-  }
+// MOCK
+const getListSuccess = {
+  status: 'Success',
+  message: '操作成功',
+  data: [
+    {
+      name: 'naiky',
+      avatar: 'https://picsum.photos/600/600',
+      image: 'https://picsum.photos/600/400',
+      createdAt: '2022/1/10 12:00',
+      content:
+        '外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....',
+    },
+    {
+      name: 'naiky',
+      avatar: 'https://picsum.photos/600/600',
+      image: 'https://picsum.photos/600/400',
+      createdAt: '2022/1/10 12:00',
+      content:
+        '外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....',
+    },
+    {
+      name: 'naiky',
+      avatar: 'https://picsum.photos/600/600',
+      image: 'https://picsum.photos/600/400',
+      createdAt: '2022/1/10 12:00',
+      content:
+        '外面看起來就超冷.... 我決定回被窩繼續睡....外面看起來就超冷....',
+    },
+  ],
+}
 
-  // API
-  const getListApi = () =>
-    axios.get('https://week2-post-project.herokuapp.com/posts')
+// API
+const getListApi = ({ sort, q }) =>
+  axios.get('https://week2-post-project.herokuapp.com/posts', {
+    params: { sort, q },
+  })
 
-  const listElement = document.querySelector('#list')
+const listElement = document.querySelector('#list')
 
-  const createNoDataDisplay = (el) => {
-    el.innerHTML = `
+const createNoDataDisplay = (el) => {
+  el.innerHTML = `
       <div class="post">
         <div class="nodata-item border-rounded mt-4 no-data">
           <div class="bar px-4 py-5 border-t-1">
             <span class="circle"></span>
           </div>
-          <p class="no-data text-center py-8">目前尚無動態，新增一則貼文吧！</p>
+          <p class="no-data text-center py-8">目前尚無 (符合) 動態，新增一則貼文吧！</p>
         </div>
       </div>
     `
-  }
+}
 
-  const createPostItem = ({ name, avatar, image, content, createdAt }) => {
-    let createTime = dayjs(createdAt).format('YYYY/MM/DD HH:mm')
-    let imageHtml = image
-      ? `
+const createPostItem = ({ name, avatar, image, content, createdAt }) => {
+  let createTime = dayjs(createdAt).format('YYYY/MM/DD HH:mm')
+  let imageHtml = image
+    ? `
         <div class="item__img">
           <img
             width="100%"
@@ -64,9 +65,9 @@
           />
         </div>
     `
-      : ''
+    : ''
 
-    let html = `
+  let html = `
     <div class="post">
       <div class="item border-rounded mt-4">
         <div class="item__header d-flex">
@@ -87,26 +88,39 @@
       </div>
     </div>
   `
-    return html
+  return html
+}
+
+const getList = async (sort, q) => {
+  try {
+    const {
+      data: { data },
+    } = await getListApi({ sort: sort || 'new', q: q || '' })
+    if (data.length < 1) return createNoDataDisplay(listElement)
+
+    let listsElement = ''
+    data.forEach((list) => {
+      listsElement += createPostItem(list)
+    })
+    listElement.innerHTML = listsElement
+  } catch (error) {
+    console.log(error)
   }
+}
 
-  const getList = async () => {
-    try {
-      const {
-        data: { data },
-      } = await getListApi()
-      console.log(data)
-      if (data.length < 1) return createNoDataDisplay(listElement)
+getList()
 
-      let listsElement = ''
-      data.forEach((list) => {
-        listsElement += createPostItem(list)
-      })
-      listElement.innerHTML = listsElement
-    } catch (error) {
-      console.log(error)
-    }
-  }
+const selectElement = document.querySelector('#search')
+const keywordElement = document.querySelector('#keyword')
+const searchBtn = document.querySelector('#search-btn')
 
-  getList()
-})()
+searchBtn.addEventListener('click', () => {
+  filterChange()
+})
+
+const filterChange = (
+  selected = selectElement.value,
+  keyword = keywordElement.value
+) => {
+  getList(selected, keyword)
+}
