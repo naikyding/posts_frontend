@@ -49,6 +49,7 @@ const createNoDataDisplay = (el) => {
         </div>
       </div>
     `
+  Swal.close()
 }
 
 const createPostItem = ({ name, avatar, image, content, createdAt }) => {
@@ -91,8 +92,29 @@ const createPostItem = ({ name, avatar, image, content, createdAt }) => {
   return html
 }
 
+const showLoadingAlert = () => {
+  let timerInterval
+  Swal.fire({
+    title: '查詢中，請稍後!',
+    html: 'I will close in <b></b> milliseconds.',
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading()
+      const b = Swal.getHtmlContainer().querySelector('b')
+      timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+      }, 100)
+    },
+    willClose: () => {
+      clearInterval(timerInterval)
+    },
+  })
+}
+
 const getList = async (sort, q) => {
   try {
+    showLoadingAlert()
     const {
       data: { data },
     } = await getListApi({ sort: sort || 'new', q: q || '' })
@@ -103,6 +125,7 @@ const getList = async (sort, q) => {
       listsElement += createPostItem(list)
     })
     listElement.innerHTML = listsElement
+    Swal.close()
   } catch (error) {
     console.log(error)
   }

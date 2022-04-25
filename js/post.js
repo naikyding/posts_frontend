@@ -56,11 +56,23 @@ submitButton.addEventListener('click', async (e) => {
     } = await postItemApi(postData)
 
     if (status === 'Success') {
-      await alert(message)
+      await Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: message,
+        showConfirmButton: false,
+        timer: 1500,
+      })
       location.href = '/'
     }
   } catch (error) {
-    await alert(error.response.data.errors)
+    Swal.fire({
+      title: 'Error!',
+      text: error.response.data.errors,
+      icon: 'error',
+      confirmButtonText: 'OK',
+    })
+
     form.reset()
   }
 })
