@@ -30,31 +30,37 @@ const postItemSuccess = {
   ],
 }
 
-const postItemApi = async () => postItemSuccess
+const postItemApi = async (data) =>
+  axios.post('https://week2-post-project.herokuapp.com/posts', data)
 
 const form = document.querySelector('#form')
 const submitButton = document.querySelector('#submit-button')
 
 submitButton.addEventListener('click', async (e) => {
   try {
-    console.log('SUBMIT')
     e.preventDefault()
     const formElement = e.target.form
+    const defaultAvatar = 'https://picsum.photos/600/400'
+    // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW4Lz_27xIJEYJam3xsO63X6qvlIWpHarS1Q&usqp=CAU'
+
+    const image = formElement[2].value.trim() || undefined
+
     const postData = {
-      name: formElement[0].value,
-      avatar: formElement[1].value,
-      image: formElement[2].value,
-      content: formElement[3].value,
+      name: formElement[0].value.trim(),
+      avatar: formElement[1].value.trim() || defaultAvatar,
+      image,
+      content: formElement[3].value.trim(),
     }
-    const { status, message, data } = await postItemApi(postData)
+    const {
+      data: { status, message },
+    } = await postItemApi(postData)
+
     if (status === 'Success') {
-      await alert('新增成功!')
+      await alert(message)
       location.href = '/'
-    } else {
-      await alert('操作失敗!')
-      form.reset()
     }
   } catch (error) {
-    console.log(error)
+    await alert(error.response.data.errors)
+    form.reset()
   }
 })

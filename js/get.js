@@ -32,7 +32,9 @@
   }
 
   // API
-  const getListApi = () => getListSuccess
+  const getListApi = () =>
+    axios.get('https://week2-post-project.herokuapp.com/posts')
+
   const listElement = document.querySelector('#list')
 
   const createNoDataDisplay = (el) => {
@@ -49,37 +51,50 @@
   }
 
   const createPostItem = ({ name, avatar, image, content, createdAt }) => {
-    return `
+    let imageHtml = image
+      ? `
+        <div class="item__img">
+          <img
+            width="100%"
+            class="border-rounded"
+            src="${image}"
+            onerror="this.onerror=null;this.src='https://thumbs.dreamstime.com/b/error-template-icon-dead-site-page-not-found-trouble-system-eps-164583533.jpg';"
+            alt="${content}"
+          />
+        </div>
+    `
+      : ''
+
+    let html = `
     <div class="post">
       <div class="item border-rounded mt-4">
         <div class="item__header d-flex">
           <div class="item__header-avatar mr-4">
-            <img src="${avatar}" alt="" />
+            <img src="${avatar}"
+            onerror="this.onerror=null;this.src='https://thumbs.dreamstime.com/b/error-template-icon-dead-site-page-not-found-trouble-system-eps-164583533.jpg';"
+            alt="${name}" />
           </div>
           <div class="item__header-dec">
             <div class="name text-bold">${name}</div>
             <div class="created-time mt-2">${createdAt}</div>
           </div>
         </div>
-        <div class="item__content mx-4">
+        <div class="item__content mt-4 ${!image ? '' : 'mb-4'}">
         ${content}
         </div>
-        <div class="item__img">
-          <img
-            width="100%"
-            class="border-rounded"
-            src="${image}"
-            alt=""
-          />
-        </div>
+        ${imageHtml}
       </div>
     </div>
   `
+    return html
   }
 
   const getList = async () => {
     try {
-      const { data } = await getListApi()
+      const {
+        data: { data },
+      } = await getListApi()
+      console.log(data)
       if (data.length < 1) return createNoDataDisplay(listElement)
 
       let listsElement = ''
