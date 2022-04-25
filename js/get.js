@@ -51,6 +51,7 @@
   }
 
   const createPostItem = ({ name, avatar, image, content, createdAt }) => {
+    let createTime = dayjs(createdAt).format('YYYY/MM/DD HH:mm')
     let imageHtml = image
       ? `
         <div class="item__img">
@@ -76,7 +77,7 @@
           </div>
           <div class="item__header-dec">
             <div class="name text-bold">${name}</div>
-            <div class="created-time mt-2">${createdAt}</div>
+            <div class="created-time mt-2">${createTime}</div>
           </div>
         </div>
         <div class="item__content mt-4 ${!image ? '' : 'mb-4'}">
